@@ -44,9 +44,7 @@ export class MoviesService {
 
   async create(movie: CreateMovieDto) {
     if (movie.release_year > new Date().getFullYear()) {
-      throw new BadRequestException(
-        'Release year cannot be in the future',
-      );
+      throw new BadRequestException('Release year cannot be in the future');
     }
 
     const newMovie = this.movieRepository.create(movie);
